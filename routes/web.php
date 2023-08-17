@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\RoomController;
@@ -12,14 +13,64 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\FrontendHomeController;
+use App\Http\Controllers\frontend\RegisterController;
+use App\Http\Controllers\frontend\ContactController;
+use App\Http\Controllers\frontend\CustomerController;
+use App\Http\Controllers\frontend\LoginController;
 
 
 
-Route::get('/admin/login',[UserController::class,'login'])->name('login');
+
+
+
+//frontend template route
+
+// customer user 
+Route::get('register-create',[CustomerController::class,'create'])->name('register.create');
+Route::post('register-store',[CustomerController::class,'store'])->name('register.store');
+Route::get('user-customer-login',[CustomerController::class,'customerLogin'])->name('userCustomer.login');
+
+
+//user login and register
+Route::get('/',[FrontendHomeController::class,'home'])->name('frontend.home');
+Route::get('/user/login',[UserController::class,'login'])->name('user.login');
+Route::post('/user/do-login',[UserController::class,'dologin'])->name('user.do.login');
+
+
+
+
+//booking
+Route::get('/Booking-create',[BookingController::class,'create'])->name('booking.create');
+Route::post('/Booking-store',[BookingController::class,'store'])->name('booking.store');
+
+
+//package
+
+Route::get('/Package-list',[PackageController::class,'list'])->name('package.list');
+Route::get('/Package-create-from',[PackageController::class,'create'])->name('package.create');
+Route::get('/Package-store',[PackageController::class,'store'])->name('package.store');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// BACKEND START//
+
+Route::get('admin/login',[UserController::class,'login'])->name('login');
 Route::post('/admin/do-login',[UserController::class,'dologin'])->name('admin.do.login');
-
-
-
 
 Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 
@@ -40,9 +91,6 @@ Route::get('/Booking',[BookingController::class,'Booking'])->name('booking');
 Route::get('/Employee',[EmployeeController::class,'list'])->name('employee.list');
 Route::get('/Report',[ReportController::class,'Report'])->name('report');
 Route::get('/Feedback',[FeedbackController::class,'Feedback'])->name('feedback');
-
-
-
 
 
 
@@ -84,7 +132,7 @@ Route::get('/Feedback',[FeedbackController::class,'Feedback'])->name('feedback')
  
 //payment
  Route::get('/Payment-list',[PaymentController::class,'list'])->name('payment.list');
- Route::get('/Payment-create-form',[PaymentController::class,'create'])->name('payment.create');
+ Route::get('/Payment-create-form',[PaymentController::class,'create'])->name('Payment.create');
  Route::post('/Payment-store',[PaymentController::class,'store'])->name('payment.store');
 
 
@@ -97,18 +145,70 @@ Route::get('/Feedback',[FeedbackController::class,'Feedback'])->name('feedback')
  Route::get('employee/delete/{id}',[EmployeeController::class,'delete'])->name ('employee.delete');
  Route::get('employee/update{id}',[EmployeeController::class,'update'])->name ('employee.update');
 
+//booking
+Route::get('/booking-list',[BookingController::class,'list'])->name('booking.list');
+Route::get('/booking-create-form',[BookingController::class,'create'])->name('booking.create');
+Route::post('/booking-store',[BookingController::class,'store'])->name('booking.store');
+
+
+
+
 
 //report
- Route::get('/Report-list',[ReportController::class,'list'])->name('report.list');
- Route::get('/Report-create-form',[ReportController::class,'create'])->name('report.create');
- Route::post('/Report-store',[ReportController::class,'store'])->name('report.store');
+ Route::get('/allreport',[ReportController::class,'all_report'])->name('all.report');
+
+ Route::get('/gueslistreport',[GuestController::class,'guest_list_report'])->name('guest.list.report');
+ Route::get('/gueslistreport/search',[GuestController::class,'guest_list_report_search'])->name('guest.list.report.search');
+
+
+ Route::get('/roomlistreport',[RoomController::class,'room_list_report'])->name('room.list.report');
+ Route::get('/roomlistreport/search',[RoomController::class,'room_list_report_search'])->name('room.list.report.search');
+
+
+ Route::get('/amenitiesreport',[AmenitiesController::class,'amenities_report'])->name('amenities.report');
+Route::get('/amenitiesreport/search',[AmenitiesController::class,'amenities_report_search'])->name('amenities.report.search');
 
 
 
-//feedback
- Route::get('/Feedback-list',[FeedbackController::class,'list'])->name('feedback.list');
- Route::get('/Feedback-create-form',[FeedbackController::class,'create'])->name('feedback.create');
- Route::post('/Feedback-store',[FeedbackController::class,'store'])->name('feedback.store');
+ Route::get('/bookingreport',[BookingController::class,'booking_report'])->name('booking.report');
+ Route::get('/bookingreport/search',[BookingController::class,'booking_report_search'])->name('booking.report.search');
+
+
+
+ Route::get('/employeereport',[EmployeeController::class,'employee_report'])->name('employee.report');
+
+
+
+
+ Route::get('/paymentreport',[PaymentController::class,'payment_report'])->name('payment.report');
+ Route::get('/paymentreport/search',[PaymentController::class,'payment_report_search'])->name('payment.report.search');
+
+
+
+
+
+ Route::get('/employeereport',[EmployeeController::class,'employee_report'])->name('employee.report');
+
+
+
+
+ Route::get('/roomcategoryreport',[RoomCategoryController::class,'roomcategory_report'])->name('roomcategory.report');
+ Route::get('/roomreport/search',[RoomController::class,'room_list_report_search'])->name('r.list.report.search');
+ 
+ 
+ 
+ 
+ Route::get('/feedbackreport',[FeedbackController::class,'feedback_report'])->name('feedback.report');
+
+
+//dashboard
+
+
+ //Route::get('/',[DashboardController::class,'dashboard'])->name('dashboard');
+ 
+
+
+ 
 
 });
 
@@ -118,8 +218,3 @@ Route::get('/Feedback',[FeedbackController::class,'Feedback'])->name('feedback')
 
 
 
-
-//booking
-Route::get('/Booking-list',[BookingController::class,'list'])->name('booking.list');
-Route::get('/Booking-create-form',[BookingController::class,'create'])->name('booking.create');
-Route::post('/Booking-store',[BookingController::class,'store'])->name('booking.store');

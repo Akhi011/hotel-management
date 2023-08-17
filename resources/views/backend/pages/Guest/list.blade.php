@@ -30,7 +30,7 @@
   <td>{{$value->description}}</td>
   <td>
       <a class="btn btn-warning" href="">edit</a>
-      <a class="btn btn-warning" href="">update</a>
+     
       <a class="btn btn-danger" href="">delete</a>
   </td>
 </tr>

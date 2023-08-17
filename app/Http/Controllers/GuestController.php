@@ -37,4 +37,31 @@ guest::create([
 return redirect()->back();
 
 }
+
+
+public function guest_list_report()
+    {
+
+        return view ('backend.pages.Report.guestlist');  
+    
+    }
+
+    public function guest_list_report_search()
+    {
+
+  $request->validate([
+  'from_date'=>'required|date',
+  'to_date'=>'required|date|after:from_date',
+
+ ]);
+
+ $from=$request->from_date;
+ $to=$request->to_date;
+
+
+$guest=Guest::whereBetween('çreated_at',[$from, $to])->get();
+return view ('backend.pages.Report.guestlist',compact('guest_list'));
+
+    }
+
 }

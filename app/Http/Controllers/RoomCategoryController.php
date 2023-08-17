@@ -17,7 +17,7 @@ class RoomCategoryController extends Controller
     public function  edit($id){
           
         
-        return view('backend.pages.RoomCategory.Edit');
+        return view('backend.pages.Room Category.Edit');
         
     }
 
@@ -31,7 +31,7 @@ class RoomCategoryController extends Controller
 
     public function create()
     {
-        return view('backend.pages.roomcategory.create');
+        return view('backend.pages.Room Category.create');
     }
 
 
@@ -41,20 +41,18 @@ class RoomCategoryController extends Controller
 
 
         $request->validate([
-            'room_number'=>'required',
-            'room_loaction'=>'required',
-            'room_description'=>'required',
-
+            'single_room'=>'required',
+            'double_room'=>'required',
+            'king_room'=>'required',
+            'deluxe_room'=>'required',
         ]); 
 
     Room_Category::create([
     'single_room'       =>$request->single_room,
     'double_room'     =>$request->double_room,
     'king_room'  =>$request->king_room,
-    'duplex_room'  =>$request->duplex_room,
-    'adjoining_room'  =>$request->adjoining_room,
-    'adjacent_room'  =>$request->adjacent_room
-    
+    'deluxe_room'  =>$request->duplex_room,
+
 
 ]);
 return redirect()->route('roomcategory.list');
@@ -62,7 +60,34 @@ return redirect()->route('roomcategory.list');
 
 }
     }
-}
+
+    public function room_category_report()
+    {
+
+        return view ('backend.pages.Report.roomcategory');  
+    
+    }
+
+    public function room_category_report_search()
+    {
+
+  $request->validate([
+  'from_date'=>'required|date',
+  'to_date'=>'required|date|after:from_date',
+
+ ]);
+
+ $from=$request->from_date;
+ $to=$request->to_date;
+
+
+$roomcategory=RoomCategory::whereBetween('çreated_at',[$from, $to])->get();
+return view ('backend.pages.Report.roomcategory',compact('guest_list'));
+
+    }
+
+};
+
 
 
 

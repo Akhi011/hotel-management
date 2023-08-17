@@ -5,7 +5,7 @@
     <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-laugh-wink"></i>
     </div>
-    <div class="sidebar-brand-text mx-3">Hotel Management System</div>
+    <div class="sidebar-brand-text mx-3">ADMIN PANNEL</div>
 </a>
 
 <!-- Divider -->
@@ -13,7 +13,7 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item active">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" href="">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
 
@@ -61,13 +61,19 @@
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Amenities</span></a>
 
+        <li class="nav-item active">
+    <a class="nav-link" href="{{route('booking.list')}}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Booking</span></a>
+
+
 
 
 
 </li>
 
 <li class="nav-item active">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" href="{{route('payment.list')}}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Payment</span></a>
 
@@ -91,23 +97,22 @@
 
 
 <li class="nav-item active">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" href="{{route('all.report')}}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Report</span></a>
 
 
 
-
-
+  <li class="nav-item active">
+    <a class="nav-link" href="">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Logout</span></a>
 
 
 </li>
 
 
-<li class="nav-item active">
-    <a class="nav-link" href="index.html">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Feedback</span></a>
+
 </li>
 
 

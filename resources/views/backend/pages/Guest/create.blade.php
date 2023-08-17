@@ -26,7 +26,7 @@
     <input type="text" class="form-control" required name="gender" placeholder="Enter Guest Gender">
   </div>
   <div class="form-check">
-    <label class="">Enter Guest description</label>
+    <label class="">Enter Guest Description</label>
     <input type="guest_description" class="form-control" required name="description" placeholder="Enter Guest Description">
   </div>
   

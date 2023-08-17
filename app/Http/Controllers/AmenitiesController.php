@@ -42,9 +42,34 @@ Amenities::create([
 'description'  =>$request->description
 
 ]);
-return redirect()->route('room.list');
-
-
+return redirect()->route('amenities.list');
 
 }
+
+
+public function amenities_report()
+    {
+
+        return view ('backend.pages.Report.amenities');  
+    
+    }
+
+    public function amenities_report_search()
+    {
+
+  $request->validate([
+  'from_date'=>'required|date',
+  'to_date'=>'required|date|after:from_date',
+
+ ]);
+
+ $from=$request->from_date;
+ $to=$request->to_date;
+
+
+$amenities=Amenities::whereBetween('çreated_at',[$from, $to])->get();
+return view ('backend.pages.Report.amenities',compact('amenities'));
+
+    }
+
 }

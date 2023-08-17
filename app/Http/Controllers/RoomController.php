@@ -58,6 +58,38 @@ return redirect()->route('room.list');
 
 
 }
-    }
+
 }
+
+    public function room_list_report()
+    {
+
+        return view ('backend.pages.Report.roomlist');  
+    
+    }
+
+    public function room_list_report_search()
+    {
+
+  $request->validate([
+  'from_date'=>'required|date',
+  'to_date'=>'required|date|after:from_date',
+
+ ]);
+
+ $from=$request->from_date;
+ $to=$request->to_date;
+
+
+$room=Room::whereBetween('çreated_at',[$from, $to])->get();
+return view ('backend.pages.Report.roomlist',compact('room_list'));
+
+    }
+    
+}
+
+
+
+
+
 

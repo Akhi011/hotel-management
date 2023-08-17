@@ -158,6 +158,7 @@
     <!-- Nav Item - User Information -->
     <li class="nav-item dropdown no-arrow">
         
+        
         <!-- Dropdown - User Information -->
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
             aria-labelledby="userDropdown">

@@ -14,29 +14,27 @@
 <h2>Create Room Category List</h2>
 
 
- <form action="{{route('room_category.store')}}" method="post">
+ <form action="{{route('roomcategory.store')}}" method="post">
     
   @csrf
   div class="form-check">
-    <label class="">Enter Guest id <span style="color:red">*</span> </label>
-    <input type="text" class="form-control" required="guest_id" placeholder="Enter Guest id">
+    <label class="">Enter Single Room <span style="color:red">*</span> </label>
+    <input type="text" class="form-control" required="single_room" placeholder="Enter About Single Room">
   </div> 
 
    <div class="form-check">
-   <label class="">Enter Guest name <span style="color:red">*</span> </label>
-    <input type="text" class="form-control" required="guest_name" placeholder="Enter Guest name">
+   <label class="">Enter Double Room <span style="color:red">*</span> </label>
+    <input type="text" class="form-control" required="double_room" placeholder="Enter About Double Room">
   </div>
   <div class="form-check">
-    <label for="">Enter Room Number </label>
-    <input type="integer" class="form-control" required name="room_number" placeholder="Enter Room Number">
+    <label for="">Enter King Room </label>
+    <input type="integer" class="form-control" required name="king_room" placeholder="Enter About King Room ">
    <div>
   <div class="form-check">
-    <label class="">Enter Room Location </label>
-    <input type="text" class="form-control" required placeholder="Enter Room Location" name="room_loaction">
+    <label class="">Enter Deluxe Room </label>
+    <input type="text" class="form-control" required name="deluxe_room" placeholder="Enter About Deluxe Room">
   </div>
-  <div class="form-check">
-    <label class="">Enter Room description</label>
-    <input type="text" class="form-control" required placeholder="Enter room Description" name="room_description">
+
   </div>
   
   <button type="submit" class="btn btn-primary">Submit</button>

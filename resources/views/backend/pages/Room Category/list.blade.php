@@ -7,14 +7,11 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">Id</th>
       <th scope="col">Single Room</th>
       <th scope="col">Double Room</th>
       <th scope="col">King Room</th>
-      <th scope="col">Duplex Room</th>
-      <th scope="col">Adjoining Room</th>
-      <th scope="col">Adjacent Room</th>
-
+      <th scope="col">Deluxe Room</th>
 
     </tr>
   </thead>
